@@ -7,4 +7,9 @@
 module.exports = {
   /* Your site config here */
   plugins: [],
+  siteMetadata: {
+    title: 'Joakim Wretlind',
+    description: 'testing gatsby and graphQL',
+    copyright: 'This website is copyright 2021 Joakim Wretlind'
+  }
 }

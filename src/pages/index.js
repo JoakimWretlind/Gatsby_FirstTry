@@ -1,7 +1,7 @@
 import React from "react"
 import { Layout } from "../components/Layout"
 import styled from 'styled-components';
-import { Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 const HeaderSection = styled.section`
   display: grid;
@@ -29,7 +29,11 @@ const HeaderBtn = styled(Link)`
     font-weight: 500;
 `
 
-export default function Home() {
+// destructure the props coming from graphQl.
+// The 'data' that we get is the info from the graphQl
+export default function Home({ data }) {
+  console.log(data)
+  const { title, description } = data.site.siteMetadata;
   return (
     <Layout>
       <HeaderSection>
@@ -40,7 +44,20 @@ export default function Home() {
           <HeaderBtn to="/projects">My Portfolio Projects</HeaderBtn>
         </div>
         <img src="/banner.png" alt="site banner" style={{ maxWidth: "100%" }} />
+        <p>{title} - {description}</p>
       </HeaderSection>
     </Layout>
   )
 }
+
+
+export const query = graphql`
+  query SiteInfo {
+  site {
+    siteMetadata {
+      description
+      title
+    }
+  }
+}
+`
