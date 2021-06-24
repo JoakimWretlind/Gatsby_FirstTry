@@ -32,8 +32,10 @@ const HeaderBtn = styled(Link)`
 // destructure the props coming from graphQl.
 // The 'data' that we get is the info from the graphQl
 export default function Home({ data }) {
+  {/*
   console.log(data)
   const { title, description } = data.site.siteMetadata;
+   */}
   return (
     <Layout>
       <HeaderSection>
@@ -44,13 +46,13 @@ export default function Home({ data }) {
           <HeaderBtn to="/projects">My Portfolio Projects</HeaderBtn>
         </div>
         <img src="/banner.png" alt="site banner" style={{ maxWidth: "100%" }} />
-        <p>{title} - {description}</p>
+        {/*<p>{title} - {description}</p>*/}
       </HeaderSection>
     </Layout>
   )
 }
 
-
+// A page query
 export const query = graphql`
   query SiteInfo {
   site {
@@ -61,3 +63,7 @@ export const query = graphql`
   }
 }
 `
+
+
+// make a query inside a component that is not a page
+// => A static query
